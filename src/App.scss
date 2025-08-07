@@ -1,0 +1,214 @@
+$background-color: #2f3640; 
+$primary-color: #f39c12;       
+$secondary-color: #e74c3c;     
+$card-background-color: #34495e;
+$shadow-color: rgba(0, 0, 0, 0.3);  
+$error-color: #c0392b;        
+$border-radius: 10px;          
+$font-family: 'Verdana', sans-serif; 
+
+body {
+  background-color: $background-color;
+  font-family: $font-family;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: $primary-color;
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 6px rgba(108, 92, 231, 0.2);
+}
+
+input {
+  width: 35%;
+  padding: 15px 20px;
+  border-radius: $border-radius;
+  border: none;
+  font-size: 1.2rem;
+  color: #333;
+  background-color: #f0f0f0;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  &:focus {
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(108, 92, 231, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  &::placeholder {
+    color: #999;
+  }
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px;
+  width: 100%;
+  max-width: 1600px;
+  margin-top: 40px;
+}
+
+.movie-card {
+  background-color: $card-background-color;
+  border-radius: $border-radius;
+  box-shadow: 0 10px 20px $shadow-color;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 500px; 
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(171, 81, 29, 0.642);
+  }
+
+  .movie-image {
+    position: relative;
+    overflow: hidden;
+
+    img {
+      display: block;
+      margin-top: 5px;
+      width: 100%;
+      height: 100%;
+      object-fit: scale-down; 
+      transition: transform 0.5s ease;
+      border-radius: $border-radius;
+    }
+
+    &:hover img {
+      transform: scale(1.1); 
+    }
+  }
+
+  .movie-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 40%;
+    
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: $primary-color;
+      text-transform: capitalize;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #929292;
+      line-height: 1.4;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    color: $secondary-color;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+
+    &:hover {
+      color:#a7382c;
+      transition: color 0.5s ease;
+    }
+  }
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid $primary-color;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.load-more-btn {
+  display: block;
+  margin: 30px auto;
+  padding: 7px 15px;
+  background-color: $primary-color;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background-color: $secondary-color;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.icon-placeholder {
+  width: 320px;
+  height: 300px;
+  background: $error-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem;
+  color: #ffffff;
+}
+.error-message {
+  color: #ff4d4d; 
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(255, 77, 77, 0.1); 
+  border: 1px solid #ff4d4d; 
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out; 
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
